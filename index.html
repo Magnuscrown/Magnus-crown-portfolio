@@ -218,6 +218,22 @@ details.faq p{padding:0 2.4rem 1.2rem 0;color:var(--muted)}
 .wcard__link svg{width:16px;height:16px;transition:transform .2s}
 .wcard:hover .wcard__link svg{transform:translateX(3px)}
 
+/* Live Projects (featured) */
+.live-card{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(155deg,var(--navy),var(--navy-d));box-shadow:0 34px 70px rgba(11,55,99,.35);border:1px solid rgba(0,168,255,.25)}
+.live-card__glow{position:absolute;inset:-20% -10% auto auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(0,168,255,.45),transparent 65%);pointer-events:none}
+.live-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.4rem;margin:1.6rem 0 0 1.6rem;padding:.4rem .95rem;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:800;font-size:.82rem;letter-spacing:.03em}
+.live-grid{position:relative;z-index:2;display:grid;gap:2rem;padding:1.4rem clamp(1.4rem,4vw,2.6rem) clamp(1.8rem,4vw,2.6rem)}
+@media (min-width:900px){.live-grid{grid-template-columns:1fr 1.05fr;gap:2.6rem;align-items:center}}
+.live-media{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:linear-gradient(155deg,#0089d1,#0B3763);box-shadow:0 24px 50px rgba(0,0,0,.35)}
+.live-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.live-card:hover .live-media img{transform:scale(1.04)}
+.live-body h3{color:#fff;font-size:clamp(1.6rem,3.6vw,2.1rem)}
+.live-body .live-subtitle{margin-top:.35rem;color:var(--blue);font-weight:700;font-size:1.02rem}
+.live-list{list-style:none;display:grid;gap:.65rem;margin:1.3rem 0 1.6rem}
+.live-list li{display:flex;align-items:flex-start;gap:.6rem;color:rgba(255,255,255,.88);font-size:1rem}
+.live-list svg{flex:none;width:19px;height:19px;margin-top:.15rem;color:var(--blue)}
+.live-body .btn{font-size:1.02rem}
+
 /* Why choose me */
 .why-grid{display:grid;gap:1.1rem}
 @media (min-width:640px){.why-grid{grid-template-columns:repeat(2,1fr)}}
@@ -344,13 +360,44 @@ details.faq p{padding:0 2.4rem 1.2rem 0;color:var(--muted)}
   <div class="stats-strip">
     <div class="container">
       <ul class="stats" data-stagger>
-        <li class="stat" data-reveal><p class="stat__num">7 Live Demos</p></li>
+        <li class="stat" data-reveal><p class="stat__num">Live Demo Websites</p></li>
         <li class="stat" data-reveal><p class="stat__num">Works on All Devices</p></li>
         <li class="stat" data-reveal><p class="stat__num">Delivered in 3-7 Days</p></li>
         <li class="stat" data-reveal><p class="stat__num">Free Consultation</p></li>
       </ul>
     </div>
   </div>
+
+  <section class="section" id="live-projects" aria-labelledby="live-projects-title">
+    <div class="container">
+      <header class="section__head" data-reveal>
+        <h2 id="live-projects-title">Live Projects</h2>
+        <p>Real products I've built and shipped.</p>
+      </header>
+
+      <div class="live-card tilt" data-tilt="3" data-reveal>
+        <div class="live-card__glow" aria-hidden="true"></div>
+        <span class="live-badge">&#128293; LIVE PROJECT</span>
+        <div class="live-grid">
+          <div class="live-media">
+            <img src="remoteviajobs.png" alt="RemoteViaJobs" loading="lazy">
+          </div>
+          <div class="live-body">
+            <h3>RemoteViaJobs</h3>
+            <p class="live-subtitle">AI-Powered Remote Job Platform</p>
+            <ul class="live-list">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>150+ live remote job listings</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>AI CV Match Checker</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>RVJ AI chat assistant (24/7)</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Email job alerts</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>100% free, no signup needed</li>
+            </ul>
+            <a class="btn btn--primary" href="https://remoteviajobs.work" target="_blank" rel="noopener">View Live Site &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="section bg-gray" id="work" aria-labelledby="work-title" style="padding-top:calc(4rem + 3.25rem)">
     <div class="container">
@@ -611,6 +658,7 @@ details.faq p{padding:0 2.4rem 1.2rem 0;color:var(--muted)}
     </div>
     <nav class="footer__nav" aria-label="Footer">
       <a href="#work">Work</a>
+      <a href="#live-projects">Live Projects</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
