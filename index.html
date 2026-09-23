@@ -308,7 +308,7 @@ details.faq p{padding:0 2.4rem 1.2rem 0;color:var(--muted)}
     <div class="container hero__grid">
       <div class="hero__copy" data-stagger>
         <div class="badge-row" data-reveal>
-          <span class="eyebrow eyebrow--live"><i></i>Currently booking for <span id="booking-month">June</span></span>
+          <span class="eyebrow eyebrow--live"><i></i>New clients welcome — reply within 24 hours</span>
           <span class="eyebrow eyebrow--fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg>Delivered in 3-7 Days</span>
         </div>
         <h1 data-reveal>I build websites that turn visitors into customers.</h1>
@@ -566,11 +566,14 @@ details.faq p{padding:0 2.4rem 1.2rem 0;color:var(--muted)}
 
       <div class="contact-grid">
         <div data-reveal>
-          <form class="form" id="quote-form" novalidate>
-            <label class="field">Name<input id="q-name" type="text" autocomplete="name" required placeholder="Your name"></label>
-            <label class="field">Email<input id="q-email" type="email" autocomplete="email" required placeholder="you@email.com"></label>
+          <form class="form" id="quote-form" action="https://formsubmit.co/magnuscrown.official@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Quote Request — Magnus Crown Website">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <label class="field">Name<input id="q-name" name="name" type="text" autocomplete="name" required placeholder="Your name"></label>
+            <label class="field">Email<input id="q-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com"></label>
             <label class="field wide">Business type
-              <select id="q-type">
+              <select id="q-type" name="business_type">
                 <option>Restaurant</option>
                 <option>Salon</option>
                 <option>Bank</option>
@@ -581,22 +584,16 @@ details.faq p{padding:0 2.4rem 1.2rem 0;color:var(--muted)}
                 <option>Other</option>
               </select>
             </label>
-            <label class="field wide">Message<textarea id="q-message" required placeholder="Tell me a bit about your project..."></textarea></label>
-            <p class="form__err wide" id="q-err" role="alert"></p>
+            <label class="field wide">Message<textarea id="q-message" name="message" required placeholder="Tell me a bit about your project..."></textarea></label>
             <button class="btn btn--primary wide" type="submit">Request a Quote</button>
             <p class="guarantee wide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Not happy with the first draft? Free revisions until you're satisfied.</p>
           </form>
-
-          <div class="success" id="q-success" hidden>
-            <h3 id="q-success-title" tabindex="-1">Thanks — request received!</h3>
-            <p>I'll get back to you within 24 hours with a personalized quote.</p>
-          </div>
         </div>
 
         <aside class="side" data-reveal>
           <p class="lead">Prefer to talk it through directly? Reach out any time.</p>
-          <a class="btn btn--wa side__wa" href="https://wa.me/1234567890?text=Hi%20Magnus%2C%20I%27d%20like%20to%20discuss%20a%20website%20project" target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
-          <p class="side__note">Every project is unique. Contact me for a personalized quote.<br><br>Or email me directly at <a class="side__email" href="mailto:hello@magnuscrown.com">hello@magnuscrown.com</a></p>
+          <a class="btn btn--wa side__wa" href="https://wa.me/233531839362?text=Hi%20Magnus%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20business." target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+          <p class="side__note">Every project is unique. Contact me for a personalized quote.</p>
         </aside>
       </div>
     </div>
@@ -653,11 +650,6 @@ details.faq p{padding:0 2.4rem 1.2rem 0;color:var(--muted)}
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
   topBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});});
 
-  // "Currently booking for [Month]" — shows next calendar month
-  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var bookingEl=$('#booking-month');
-  if(bookingEl){ var d=new Date(); bookingEl.textContent = MONTHS[(d.getMonth()+1)%12]; }
-
   // FAQ accordion — one open at a time
   var faqs=$$('details.faq');
   faqs.forEach(function(d){ d.addEventListener('toggle',function(){ if(d.open) faqs.forEach(function(o){ if(o!==d) o.open=false; }); }); });
@@ -669,18 +661,6 @@ details.faq p{padding:0 2.4rem 1.2rem 0;color:var(--muted)}
     var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-visible');io.unobserve(en.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
     revealEls.forEach(function(el){io.observe(el);});
   } else { revealEls.forEach(function(el){el.classList.add('is-visible');}); }
-
-  // Contact form (static demo — no backend)
-  var form=$('#quote-form');
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var name=$('#q-name').value.trim(), email=$('#q-email').value.trim(), msg=$('#q-message').value.trim(), err=$('#q-err');
-    if(!name||!email||!msg){ err.textContent='Please fill in your name, email, and message.'; return; }
-    err.textContent='';
-    form.hidden=true;
-    $('#q-success').hidden=false;
-    $('#q-success-title').focus();
-  });
 
   // 3D motion: hero stack + card tilt
   if(!reduceMotion){
